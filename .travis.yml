@@ -7,7 +7,7 @@ matrix:
   include:
   - os: osx
     before_deploy:
-      - mkdir -p upload && cp test upload/test-mac-${TRAVIS_COMMIT:0:7}
+      - mkdir -p upload && cp boron/boron upload/boron-mac-${TRAVIS_COMMIT:0:7}
     deploy:
       provider: pages
       local_dir: upload
@@ -17,5 +17,12 @@ matrix:
       on:
         branch: master
 
+before_script:
+  - git clone https://git.code.sf.net/p/urlan/boron/code boron
+
 script:
-  - make && ./test
+  - cd boron
+  - ./configure --static --thread
+  - make
+  - make -C test
+  - cd ..
