@@ -6,8 +6,11 @@ compiler:
 matrix:
   include:
   - os: osx
+    before_deploy:
+      - mkdir -p upload && cp test upload/test-mac-${TRAVIS_COMMIT:0:7}
     deploy:
       provider: pages
+      local_dir: upload
       skip_cleanup: true
       github_token: $GITHUB_TOKEN
       keep_history: true
