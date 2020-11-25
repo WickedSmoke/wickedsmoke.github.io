@@ -7,7 +7,7 @@ matrix:
   include:
   - os: osx
     before_deploy:
-      - mkdir -p upload && cp boron/boron upload/boron-mac-${TRAVIS_COMMIT:0:7}
+      - mkdir -p upload && cp boron/boron upload/boron-mac-${TRAVIS_BUILD_NUMBER}-$(< boron/rev)
     deploy:
       provider: pages
       local_dir: upload
@@ -22,6 +22,7 @@ before_script:
 
 script:
   - cd boron
+  - git rev-parse --short HEAD >rev
   - ./configure --static --thread
   - make
   - make -C test
