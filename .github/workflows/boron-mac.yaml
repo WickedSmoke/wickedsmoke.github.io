@@ -1,0 +1,17 @@
+name: boron-mac
+on: workflow_dispatch
+jobs:
+  build-static-binary:
+    runs-on: macos-11
+    steps:
+      - run: |
+          git clone https://git.code.sf.net/p/urlan/boron/code boron
+          cd boron
+          git rev-parse --short HEAD >rev
+          ./configure --static --thread
+          make
+          make -C test
+      - uses: actions/upload-artifact@v3
+        with:
+          name: boron-Darwin.x86_64
+          path: boron
