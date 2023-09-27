@@ -26,5 +26,5 @@ var menudata={children:[
 {text:"Main Page",url:"index.html"},
 {text:"API",url:"faun_8h.html"},
 {text:"Examples",url:"examples.html"},
-{text:"Downloads",url:"md_download.html"},
-{text:"Source",url:"https://github.com/WickedSmoke/faun"}]}
+{text:"Downloads",url:"^https://github.com/WickedSmoke/faun/releases"},
+{text:"Source",url:"^https://github.com/WickedSmoke/faun"}]}
